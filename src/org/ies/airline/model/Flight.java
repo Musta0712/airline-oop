@@ -25,6 +25,22 @@ public class Flight {
         }
     }
 
+    public boolean hasPassenger(String nif) {
+        for (var passenger : passengers) {
+            if (passenger != null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public Passenger findPassenger(String nif) {
+        for (var passenger : passengers) {
+            return passenger;
+        }
+        return null;
+    }
+
     public int getFlightNumber() {
         return flightNumber;
     }

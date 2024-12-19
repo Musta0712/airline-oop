@@ -12,15 +12,50 @@ public class Airline {
         this.flights = flights;
     }
 
-    public void shoeInfo() {
+    public void showInfo() {
         System.out.println("Nombre de la aerolínea: " + name + "Vuelos: ");
         for (var flight : flights) {
             flight.showInfo();
         }
     }
 
-    public Passenger hasPassenger(String nif){
+    public void showFLightsFromOrigin(String origin) {
+        for (var flight : flights) {
+            if (flight.getOrigin().equals(origin)) {
+                flight.showInfo();
+            }
+        }
+    }
 
+    public Flight findFlight(int flightNumber) {
+        for (var flight : flights) {
+            if (flight.getFlightNumber() == flightNumber) {
+                return flight;
+            }
+        }
+        return null;
+    }
+
+    public void showPassengerFlights(String nif) {
+        for (var flight : flights) {
+            if (flight.hasPassenger(nif)) {
+                flight.showInfo();
+            }
+        }
+    }
+
+    public Integer getPassengerSeat(int flightNumber, String nif) {
+        var flight = findFlight(flightNumber);
+
+        if (flight != null) {
+            var passenger = flight.findPassenger(nif);
+
+            if (passenger != null) {
+
+                return passenger.getSeatNumber();
+            }
+        }
+        return null;
     }
 
     public String getName() {
