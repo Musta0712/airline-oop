@@ -27,7 +27,7 @@ public class Flight {
 
     public boolean hasPassenger(String nif) {
         for (var passenger : passengers) {
-            if (passenger != null) {
+            if (passenger.getNif().equals(nif)) {
                 return true;
             }
         }
@@ -36,7 +36,9 @@ public class Flight {
 
     public Passenger findPassenger(String nif) {
         for (var passenger : passengers) {
-            return passenger;
+            if (passenger.getNif().equals(nif)){
+                return passenger;
+            }
         }
         return null;
     }
